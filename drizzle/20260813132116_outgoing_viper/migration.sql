@@ -1,0 +1,1 @@
+CREATE TYPE "membership_role" AS ENUM('member', 'moderator');

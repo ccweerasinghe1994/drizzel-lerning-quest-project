@@ -1,0 +1,31 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "e8454de9-d03e-4620-88b5-7db400e90055",
+  "prevIds": [
+    "158ba9d1-dd41-4c62-96f2-a665646ec1f1"
+  ],
+  "ddl": [
+    {
+      "values": [
+        "member",
+        "moderator"
+      ],
+      "name": "membership_role",
+      "entityType": "enums",
+      "schema": "public"
+    },
+    {
+      "values": [
+        "draft",
+        "active",
+        "completed",
+        "archived"
+      ],
+      "name": "quest_status",
+      "entityType": "enums",
+      "schema": "public"
+    }
+  ],
+  "renames": []
+}

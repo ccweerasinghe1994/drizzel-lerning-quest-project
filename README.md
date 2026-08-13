@@ -71,4 +71,8 @@ erDiagram
         enum completed
         enum archived
     }
+    membership_role {
+        enum member
+        enum moderator
+    }
 ```
