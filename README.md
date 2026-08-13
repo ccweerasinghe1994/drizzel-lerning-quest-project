@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Tech Stack
+This project has been set up with the following additional tools:
+- **[Drizzle ORM](https://orm.drizzle.team/)** - TypeScript ORM
+- **PostgreSQL** (`pg`) - Database driver
+- **[Zod](https://zod.dev/)** - Schema validation
+- **Dotenv** - Environment variable management
+
 ## Getting Started
 
 First, run the development server:
