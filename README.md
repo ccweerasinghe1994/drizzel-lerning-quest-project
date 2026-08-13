@@ -75,4 +75,11 @@ erDiagram
         enum member
         enum moderator
     }
+    users {
+        integer id PK
+        text email UK
+        text display_name
+        integer xp
+        timestamp created_at
+    }
 ```

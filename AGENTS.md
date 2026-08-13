@@ -9,4 +9,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 <!-- END:nextjs-agent-rules -->
 
 
-when ask to update the Readme.md first check the changed files and do the update. always check for the database mermaid diagram and update it if needed.
+when ask to update the Readme.md first check the changed files and do the update. always check for the database mermaid diagram and update it if needed. then commit the changes and push

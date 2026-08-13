@@ -1,0 +1,1 @@
+ALTER TABLE "users" ADD CONSTRAINT "users_xp_nonnegative" CHECK ("xp" >= 0);
