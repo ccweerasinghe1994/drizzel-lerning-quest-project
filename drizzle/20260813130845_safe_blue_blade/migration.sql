@@ -1,0 +1,1 @@
+CREATE TYPE "quest_status" AS ENUM('draft', 'active', 'completed', 'archived');

@@ -48,3 +48,27 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ```
 docker run --name questboard-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=questboard -p 54331:5432 -d postgres:18-alpine
 ```
+
+## Database Management
+
+This project uses [Drizzle ORM](https://orm.drizzle.team/) and [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview). The following scripts are available for managing the database:
+
+- `pnpm run db:generate` - Generate SQL migration files based on schema changes.
+- `pnpm run db:migrate` - Run pending migrations against the database.
+- `pnpm run db:check` - Check for schema mismatches.
+- `pnpm run db:studio` - Launch Drizzle Studio, a visual database explorer.
+- `pnpm run db:push` - Push schema changes directly to the database (useful for rapid prototyping).
+
+## Database Structure
+
+Below is the entity-relationship diagram of our current database schema:
+
+```mermaid
+erDiagram
+    quest_status {
+        enum draft
+        enum active
+        enum completed
+        enum archived
+    }
+```

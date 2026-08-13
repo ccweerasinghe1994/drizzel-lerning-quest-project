@@ -1,0 +1,22 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "158ba9d1-dd41-4c62-96f2-a665646ec1f1",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "values": [
+        "draft",
+        "active",
+        "completed",
+        "archived"
+      ],
+      "name": "quest_status",
+      "entityType": "enums",
+      "schema": "public"
+    }
+  ],
+  "renames": []
+}
