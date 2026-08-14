@@ -66,6 +66,7 @@ Below is the entity-relationship diagram of our current database schema:
 ```mermaid
 erDiagram
     users ||--o{ quests : "owns"
+    quests ||--o{ tasks : "contains"
 
     quest_status {
         enum draft
@@ -93,5 +94,14 @@ erDiagram
         integer difficulty
         timestamp created_at
         timestamp updated_at
+    }
+    tasks {
+        integer id PK
+        integer quest_id FK
+        text title
+        integer position
+        integer xp_reward
+        timestamp due_at
+        timestamp created_at
     }
 ```

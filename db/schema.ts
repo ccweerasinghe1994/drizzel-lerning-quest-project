@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { integer, pgEnum, pgTable, text, timestamp, check, index } from "drizzle-orm/pg-core"
+import { integer, pgEnum, pgTable, text, timestamp, check, index, unique } from "drizzle-orm/pg-core"
 
 export const questStatus = pgEnum("quest_status", ["draft", "active", "completed", "archived"])
 
@@ -77,6 +77,51 @@ export const quests = pgTable(
         check(
             "quests_difficulty_range",
             sql`${t.difficulty} between 1 and 5`,
+        ),
+    ],
+);
+
+export const tasks = pgTable(
+    "tasks",
+    {
+        id: integer("id")
+            .primaryKey()
+            .generatedAlwaysAsIdentity(),
+
+        questId: integer("quest_id")
+            .notNull()
+            .references(() => quests.id, { onDelete: "cascade" }),
+
+        title: text("title")
+            .notNull(),
+
+        position: integer("position")
+            .notNull(),
+
+        xpReward: integer("xp_reward")
+            .notNull()
+            .default(10),
+
+        dueAt: timestamp("due_at", { withTimezone: true }),
+
+        createdAt: timestamp("created_at", { withTimezone: true })
+            .notNull()
+            .defaultNow(),
+    },
+    (t) => [
+        index("tasks_quest_id_idx").on(t.questId),
+
+        unique("tasks_quest_position_unique")
+            .on(t.questId, t.position),
+
+        check(
+            "tasks_position_positive",
+            sql`${t.position} > 0`,
+        ),
+
+        check(
+            "tasks_xp_positive",
+            sql`${t.xpReward} > 0`,
         ),
     ],
 );
