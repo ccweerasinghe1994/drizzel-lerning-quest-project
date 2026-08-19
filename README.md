@@ -1,11 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Tech Stack
+
 This project has been set up with the following additional tools:
+
 - **[Drizzle ORM](https://orm.drizzle.team/)** - TypeScript ORM
 - **PostgreSQL** (`pg`) - Database driver
 - **[Zod](https://zod.dev/)** - Schema validation
 - **Dotenv** - Environment variable management
+- **[Prettier](https://prettier.io/)** - Code formatting
 
 ## Getting Started
 
@@ -42,7 +45,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
 ## Local development
 
 ```
@@ -58,6 +60,13 @@ This project uses [Drizzle ORM](https://orm.drizzle.team/) and [Drizzle Kit](htt
 - `pnpm run db:check` - Check for schema mismatches.
 - `pnpm run db:studio` - Launch Drizzle Studio, a visual database explorer.
 - `pnpm run db:push` - Push schema changes directly to the database (useful for rapid prototyping).
+
+## Code Formatting
+
+Prettier is configured for the application and project configuration files:
+
+- `pnpm run format` - Format the project files.
+- `pnpm run format:check` - Check formatting without changing files.
 
 ## Database Structure
 
