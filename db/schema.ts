@@ -150,3 +150,13 @@ export const taskCompletions = pgTable('task_completions',{
     index("task_completions_task_id_idx").on(t.taskId),
     check('task_completions_xp_nonnegative',sql`${t.xpAwarded} >= 0`)
 ])
+
+export const tags=pgTable("tags",{id:integer("id")
+    .primaryKey()
+    .generatedAlwaysAsIdentity(),
+    slug:text("slug")
+    .notNull()
+    .unique(),
+    label:text("label")
+    .notNull(),
+});

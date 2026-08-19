@@ -120,4 +120,9 @@ erDiagram
         integer xp_awarded
         timestamp created_at
     }
+    tags {
+        integer id PK
+        text slug UK
+        text label
+    }
 ```
