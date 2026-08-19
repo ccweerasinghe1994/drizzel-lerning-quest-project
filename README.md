@@ -43,7 +43,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-## Local development 
+## Local development
 
 ```
 docker run --name questboard-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=questboard -p 54331:5432 -d postgres:18-alpine
@@ -67,6 +67,8 @@ Below is the entity-relationship diagram of our current database schema:
 erDiagram
     users ||--o{ quests : "owns"
     quests ||--o{ tasks : "contains"
+    users ||--o{ memberships : "joins"
+    quests ||--o{ memberships : "has members"
 
     quest_status {
         enum draft
@@ -104,4 +106,10 @@ erDiagram
         timestamp due_at
         timestamp created_at
     }
-```
+    memberships {
+        integer user_id PK, FK
+        integer quest_id PK, FK
+        membership_role role
+        timestamp joined_at
+    }
+```

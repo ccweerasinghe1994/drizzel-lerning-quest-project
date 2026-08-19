@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
-import { integer, pgEnum, pgTable, text, timestamp, check, index, unique } from "drizzle-orm/pg-core"
+
+import { check, index, integer, pgEnum, pgTable, primaryKey, text, timestamp, unique } from "drizzle-orm/pg-core";
 
 export const questStatus = pgEnum("quest_status", ["draft", "active", "completed", "archived"])
 
@@ -125,3 +126,14 @@ export const tasks = pgTable(
         ),
     ],
 );
+
+
+export const memberships = pgTable('memberships', {
+    userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+    questId: integer('quest_id').notNull().references(() => quests.id, { onDelete: 'cascade' }),
+    role: membershipRole("role").notNull().default("member"),
+    joinedAt: timestamp('joined_at', { withTimezone: true }).notNull().defaultNow()
+}, (t) => [
+    primaryKey({ columns: [t.userId, t.questId] }),
+    index("memberships_quest_id_idx").on(t.questId)
+])
