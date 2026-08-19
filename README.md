@@ -69,6 +69,8 @@ erDiagram
     quests ||--o{ tasks : "contains"
     users ||--o{ memberships : "joins"
     quests ||--o{ memberships : "has members"
+    users ||--o{ task_completions : "records"
+    tasks ||--o{ task_completions : "completed by"
 
     quest_status {
         enum draft
@@ -111,5 +113,11 @@ erDiagram
         integer quest_id PK, FK
         membership_role role
         timestamp joined_at
+    }
+    task_completions {
+        integer user_id PK, FK
+        integer task_id PK, FK
+        integer xp_awarded
+        timestamp created_at
     }
 ```

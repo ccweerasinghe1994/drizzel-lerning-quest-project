@@ -137,3 +137,16 @@ export const memberships = pgTable('memberships', {
     primaryKey({ columns: [t.userId, t.questId] }),
     index("memberships_quest_id_idx").on(t.questId)
 ])
+
+export const taskCompletions = pgTable('task_completions',{
+    userId:integer('user_id').notNull().references(()=>users.id,{onDelete:'cascade'}),
+    taskId:integer('task_id').notNull().references(()=>tasks.id,{onDelete:'cascade'}),
+    xpAwarded: integer('xp_awarded').notNull(),
+    completedAt: timestamp("created_at", { withTimezone: true })
+            .notNull()
+            .defaultNow(),
+},(t)=>[
+    primaryKey({columns:[t.userId,t.taskId]}),
+    index("task_completions_task_id_idx").on(t.taskId),
+    check('task_completions_xp_nonnegative',sql`${t.xpAwarded} >= 0`)
+])
